@@ -25,7 +25,7 @@ public class UserController {
         return userService.signup(request);
     }
 
-    @PostMapping("/login")
+    @PostMapping("/signin")
     public ApiResponse<?> login(
             @Valid @RequestBody LoginRequest request) {
 

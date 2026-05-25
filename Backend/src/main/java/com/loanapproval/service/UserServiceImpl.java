@@ -24,14 +24,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public ApiResponse<?> signup(SignupRequest request) {
 
-        if (!request.getPassword()
-                .equals(request.getReEnterPassword())) {
-
-            return ApiResponse.builder()
-                    .success(false)
-                    .message("Passwords do not match")
-                    .build();
-        }
+//        if (!request.getPassword()
+//                .equals(request.getReEnterPassword())) {
+//
+//            return ApiResponse.builder()
+//                    .success(false)
+//                    .message("Passwords do not match")
+//                    .build();
+//        }
 
         if (userRepository.existsByEmail(request.getEmail())) {
 

@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class SignupRequest {
 
-    @NotBlank(message = "Full Name  Required")
+
     private String fullName;
 
     @NotBlank(message = "Email Required")
@@ -17,6 +17,4 @@ public class SignupRequest {
     @NotBlank(message = "Password Required")
     private String password;
 
-    @NotBlank(message = "Re Enter Password Required")
-    private String reEnterPassword;
 }

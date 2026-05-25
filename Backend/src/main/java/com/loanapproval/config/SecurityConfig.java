@@ -15,17 +15,11 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
+                .cors(cors -> {})
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-
-                        // 🔓 PUBLIC APIs
                         .requestMatchers("/api/auth/**").permitAll()
-
-                        // 🔒 ALL OTHER APIs SECURED
-                        .anyRequest().permitAll()
-                )
-                .sessionManagement(session ->
-                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                        .anyRequest().authenticated()
                 );
 
         return http.build();
