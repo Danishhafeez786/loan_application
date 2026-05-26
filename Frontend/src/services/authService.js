@@ -10,12 +10,12 @@ export const signupUser = async (userData) => {
   }
 };
 
-export const signinUser = async (userData) => {
+export const LoginUser = async (userData) => {
   try {
-    const response = await apiClient.post("/auth/signin", userData);
+    const response = await apiClient.post("/auth/Login", userData);
 
     return response.data;
   } catch (error) {
-    throw error.response?.data || "Signin failed";
+    throw error.response?.data || "Login failed";
   }
 };

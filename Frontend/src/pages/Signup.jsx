@@ -91,7 +91,7 @@ function Signup() {
         <p className="text-center mt-6">
           Already have an account?{" "}
           <Link to="/" className="text-blue-600">
-            Sign In
+            Login
           </Link>
         </p>
 

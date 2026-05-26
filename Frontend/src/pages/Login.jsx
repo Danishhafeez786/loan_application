@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { signinUser } from "../services/authService";
+import { LoginUser } from "../services/authService";
 
-function Signin() {
+function Login() {
 
   const [formData, setFormData] = useState({
     email: "",
@@ -24,7 +24,7 @@ function Signin() {
     try {
       setLoading(true);
 
-      const response = await signinUser(formData);
+      const response = await LoginUser(formData);
 
       alert(response.message || "Login successful");
 
@@ -73,8 +73,17 @@ function Signin() {
             disabled={loading}
             className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl"
           >
-            {loading ? "Please wait..." : "Sign In"}
+            {loading ? "Please wait..." : "Login"}
           </button>
+
+          <div className="text-right">
+            <Link
+              to="/reset-password"
+              className="text-sm text-blue-600 hover:underline"
+            >
+              Forgot Password?
+            </Link>
+          </div>
 
         </form>
 
@@ -90,4 +99,4 @@ function Signin() {
   );
 }
 
-export default Signin;
+export default Login;
