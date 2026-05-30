@@ -1,101 +1,61 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { LoginUser } from "../services/authService";
+import AuthLayout from "../components/AuthLayout";
 
 function Login() {
-
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-
-  const [loading, setLoading] = useState(false);
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      setLoading(true);
-
-      const response = await LoginUser(formData);
-
-      alert(response.message || "Login successful");
-
-      console.log(response);
-
-    } catch (error) {
-      alert(error.message || "Login failed");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
-
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800">
-            Welcome Back
-          </h1>
-        </div>
-
-        <form onSubmit={handleSubmit} className="space-y-5">
-
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-            className="w-full border border-gray-300 rounded-xl px-4 py-3"
-          />
-
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-            className="w-full border border-gray-300 rounded-xl px-4 py-3"
-          />
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl"
+    <AuthLayout
+      title="Customer Login"
+      subtitle="Access your account securely"
+      footer={
+        <p className="text-center mt-6 text-gray-600">
+          New here?{" "}
+          <Link
+            to="/signup"
+            className="text-green-600 font-semibold"
           >
-            {loading ? "Please wait..." : "Login"}
-          </button>
-
-          <div className="text-right">
-            <Link
-              to="/reset-password"
-              className="text-sm text-blue-600 hover:underline"
-            >
-              Forgot Password?
-            </Link>
-          </div>
-
-        </form>
-
-        <p className="text-center mt-6">
-          Don’t have an account?{" "}
-          <Link to="/signup" className="text-blue-600">
-            Sign Up
+            Register Now
           </Link>
         </p>
+      }
+    >
+      <form className="space-y-4">
 
-      </div>
-    </div>
+        <input
+          type="email"
+          placeholder="Email Address"
+          className="w-full border rounded-xl px-4 py-3 focus:ring-2 focus:ring-green-500"
+        />
+
+        <input
+          type="password"
+          placeholder="Password"
+          className="w-full border rounded-xl px-4 py-3 focus:ring-2 focus:ring-green-500"
+        />
+
+        <div className="flex justify-between text-sm">
+
+          <label className="flex items-center gap-2">
+            <input type="checkbox" />
+            Remember me
+          </label>
+
+          <Link
+            to="/reset-password"
+            className="text-green-600"
+          >
+            Forgot Password?
+          </Link>
+
+        </div>
+
+        <button
+          className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl font-semibold"
+        >
+          Login
+        </button>
+
+      </form>
+    </AuthLayout>
   );
 }
 
