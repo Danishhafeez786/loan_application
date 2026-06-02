@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Component
 public class UserTransformer {
@@ -17,6 +18,7 @@ public class UserTransformer {
                          PasswordEncoder passwordEncoder) {
 
         return User.builder()
+                .id(UUID.randomUUID())
                 .fullName(request.getFullName())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
@@ -46,6 +48,7 @@ public class UserTransformer {
             PasswordEncoder passwordEncoder) {
 
         return User.builder()
+                .id(UUID.randomUUID())
                 .fullName(request.getFullName())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))

@@ -1,0 +1,28 @@
+package com.loanapproval.domain;
+
+public enum DocumentType {
+
+    CNIC_FRONT,
+
+    CNIC_BACK,
+
+    PASSPORT_PHOTO,
+
+    SALARY_SLIP,
+
+    BANK_STATEMENT,
+
+    EMPLOYMENT_CERTIFICATE,
+
+    EDUCATIONAL_DOCUMENT,
+
+    ADMISSION_LETTER,
+
+    PROPERTY_DOCUMENT,
+
+    BUSINESS_REGISTRATION,
+
+    TAX_DOCUMENT,
+
+    OTHER
+}
